@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instanciación - Práctica 4</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ipn: '#6d2036',      
+                        upiicsa: '#006b3f',  
+                        techblue: '#1e3a8a', /* Color temático Práctica 4 */
+                        techlight: '#eff6ff',
+                        surface: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #334155; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Menú de Navegación -->
+    <nav class="sticky top-0 w-full bg-white shadow-md z-40 border-b-4 border-techblue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center font-bold text-techblue font-serif">
+                    Práctica 4
+                </div>
+                <!-- Enlaces Desktop -->
+                <div class="hidden md:flex space-x-6 overflow-x-auto font-mono text-sm">
+                    <a href="practica_4.html#informacion" class="text-gray-600 hover:text-techblue hover:bg-techlight px-3 py-2 rounded-md transition-colors">Información</a>
+                    <a href="practica_4.html#materiales" class="text-gray-600 hover:text-techblue hover:bg-techlight px-3 py-2 rounded-md transition-colors">Materiales</a>
+                    <a href="practica_4.html#desarrollo" class="text-gray-600 hover:text-techblue hover:bg-techlight px-3 py-2 rounded-md transition-colors">Desarrollo</a>
+                    
+                    <!-- Enlace Activo -->
+                    <a href="instanciacion_4.html" class="text-techblue font-bold bg-techlight px-3 py-2 rounded-md transition-colors border-b-2 border-techblue">Instanciación</a>
+                    
+                    <a href="practica_4.html#evidencia" class="text-gray-600 hover:text-techblue hover:bg-techlight px-3 py-2 rounded-md transition-colors">Evidencia</a>
+                    <a href="practica_4.html#conclusiones" class="text-gray-600 hover:text-techblue hover:bg-techlight px-3 py-2 rounded-md transition-colors">Conclusiones</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-10 space-y-12">
+        
+        <!-- Título -->
+        <div class="border-b-2 border-gray-200 pb-4">
+            <h1 class="text-4xl font-bold text-gray-900 font-serif">Instanciación</h1>
+            <h2 class="text-xl text-techblue mt-2 font-mono">> Programa del restador y comparador de 6 bits</h2>
+        </div>
+
+        <!-- Diagramas de Bloques -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-2xl font-bold text-techblue mb-6">Arquitectura del Circuito</h3>
+            
+            <div class="space-y-8">
+                <!-- Imagen Restador -->
+                <div class="bg-black p-4 rounded-xl shadow-inner border border-gray-300">
+                    <h4 class="text-white font-mono text-sm mb-3 border-b border-gray-700 pb-2">Estructura: Restador de 6 bits</h4>
+                    <!-- Nota: Asegúrate de guardar el recorte del PDF como 'restador.png' -->
+                    <img src="restador.png" alt="Diagrama de bloques del Restador de 6 bits" class="w-full object-contain" />
+                    <p class="text-gray-400 text-xs mt-3 text-center">El circuito se compone de un Medio Restador (R0) para los bits menos significativos (LSB) y cinco Restadores Completos (R1-R5) conectados en cascada mediante el préstamo (P)[cite: 13].</p>
+                </div>
+
+                <!-- Imagen Comparador -->
+                <div class="bg-black p-4 rounded-xl shadow-inner border border-gray-300">
+                    <h4 class="text-white font-mono text-sm mb-3 border-b border-gray-700 pb-2">Estructura: Comparador de 6 bits</h4>
+                    <!-- Nota: Asegúrate de guardar el recorte del PDF como 'comparador.png' -->
+                    <img src="comparador.png" alt="Diagrama de bloques del Comparador de 6 bits" class="w-full object-contain max-w-md mx-auto" />
+                    <p class="text-gray-400 text-xs mt-3 text-center">Toma las entradas A0-A5 y B0-B5 y evalúa si A>B (M), A&lt;B (N), o A=B (I)[cite: 14].</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ecuaciones Lógicas -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-2xl font-bold text-techblue mb-4">Diseño Lógico</h3>
+            <p class="text-gray-600 mb-6">Ecuaciones de diferencia (D) y préstamo (P) para el restador en paralelo:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-techlight p-6 rounded-lg border border-blue-200 font-mono text-sm text-gray-800">
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 0 (Medio Restador):</p>
+                    <p>P0 = A0' · B0</p>
+                    <p>D0 = A0 ⊕ B0</p>
+                </div>
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 3 (Restador Completo):</p>
+                    <p>P3 = A3'·P2 + A3'·B3 + B3·P2</p>
+                    <p>D3 = A3 ⊕ B3 ⊕ P2</p>
+                </div>
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 1 (Restador Completo):</p>
+                    <p>P1 = A1'·P0 + A1'·B1 + B1·P0</p>
+                    <p>D1 = A1 ⊕ B1 ⊕ P0</p>
+                </div>
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 4 (Restador Completo):</p>
+                    <p>P4 = A4'·P3 + A4'·B4 + B4·P3</p>
+                    <p>D4 = A4 ⊕ B4 ⊕ P3</p>
+                </div>
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 2 (Restador Completo):</p>
+                    <p>P2 = A2'·P1 + A2'·B2 + B2·P1</p>
+                    <p>D2 = A2 ⊕ B2 ⊕ P1</p>
+                </div>
+                <div>
+                    <p class="font-bold text-techblue mb-2">Bit 5 (Salida Final):</p>
+                    <p>Psal = A5'·P4 + A5'·B5 + B5·P4</p>
+                    <p>D5 = A5 ⊕ B5 ⊕ P4</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Código VHDL -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-2xl font-bold text-ipn mb-4">Código VHDL</h3>
+            <div class="bg-gray-900 rounded-lg p-6 overflow-x-auto shadow-inner">
+<pre class="text-blue-400 font-mono text-sm leading-relaxed">
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY restador_comp_6bits IS
+PORT (
+    A0,A1,A2,A3,A4,A5 : IN STD_LOGIC; 
+    B0,B1,B2,B3,B4,B5 : IN STD_LOGIC; 
+    D0,D1,D2,D3,D4,D5,Psal : OUT STD_LOGIC;
+    M, N, I : OUT STD_LOGIC
+);
+END restador_comp_6bits;
+
+ARCHITECTURE BEHAVIORAL OF restador_comp_6bits IS 
+SIGNAL P0,P1,P2,P3,P4, P_final : STD_LOGIC;
+SIGNAL EQ0, EQ1, EQ2, EQ3, EQ4, EQ5, ALL_EQ : STD_LOGIC;
+BEGIN
+    -- Lógica del Restador
+    P0 &lt;= (NOT A0) AND B0;
+    D0 &lt;= A0 XOR B0;
+    
+    P1 &lt;= ((NOT A1) AND P0) OR ((NOT A1) AND B1) OR (B1 AND P0);
+    D1 &lt;= A1 XOR B1 XOR P0;
+    
+    P2 &lt;= ((NOT A2) AND P1) OR ((NOT A2) AND B2) OR (B2 AND P1);
+    D2 &lt;= A2 XOR B2 XOR P1;
+    
+    P3 &lt;= ((NOT A3) AND P2) OR ((NOT A3) AND B3) OR (B3 AND P2);
+    D3 &lt;= A3 XOR B3 XOR P2;
+    
+    P4 &lt;= ((NOT A4) AND P3) OR ((NOT A4) AND B4) OR (B4 AND P3);
+    D4 &lt;= A4 XOR B4 XOR P3;
+    
+    P_final &lt;= ((NOT A5) AND P4) OR ((NOT A5) AND B5) OR (B5 AND P4);
+    Psal &lt;= P_final;
+    D5 &lt;= A5 XOR B5 XOR P4;
+
+    -- Lógica del Comparador
+    EQ0 &lt;= NOT (A0 XOR B0);
+    EQ1 &lt;= NOT (A1 XOR B1);
+    EQ2 &lt;= NOT (A2 XOR B2);
+    EQ3 &lt;= NOT (A3 XOR B3);
+    EQ4 &lt;= NOT (A4 XOR B4);
+    EQ5 &lt;= NOT (A5 XOR B5);
+    ALL_EQ &lt;= EQ0 AND EQ1 AND EQ2 AND EQ3 AND EQ4 AND EQ5;
+    
+    I &lt;= ALL_EQ;                           -- A = B
+    N &lt;= P_final;                          -- A &lt; B (Préstamo final activado)
+    M &lt;= (NOT P_final) AND (NOT ALL_EQ);   -- A &gt; B
+END BEHAVIORAL;
+</pre>
+            </div>
+        </section>
+
+        <!-- Pasos Quartus -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="text-2xl font-bold text-upiicsa mb-6">Conexión a tarjeta MAX II (Configuración en Quartus)</h3>
+            
+            <div class="space-y-6 text-gray-700">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">1</div>
+                    <p class="mt-1">Creamos un nuevo proyecto, elegimos la carpeta donde lo vamos a guardar y le ponemos un nombre relacionado con lo que estamos trabajando (ej. <em>restador_comp_6bits</em>), para tenerlo bien identificado.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">2</div>
+                    <p class="mt-1">Seleccionamos la opción <strong>Empty project</strong> para crear un proyecto desde cero, sin archivos ni diseños previos. Esto nos permite agregar nuestro propio código y configurar el circuito.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">3</div>
+                    <p class="mt-1">Como no tenemos proyectos anteriores para agregar, dejamos esta parte vacía y simplemente damos clic en “Next” para continuar.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">4</div>
+                    <p class="mt-1">Seleccionamos el tipo de tarjeta en la sección <strong>Device Family</strong>, eligiendo <strong>MAX II</strong>. En <strong>Pin count</strong>, seleccionamos 100 pines. En <strong>Available devices</strong>, buscamos el modelo exacto impreso en la placa para evitar errores.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">5</div>
+                    <p class="mt-1">Seleccionamos el lenguaje de programación que vamos a utilizar para el proyecto, en este caso, <strong>VHDL</strong>.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">6</div>
+                    <p class="mt-1">Al terminar este proceso, aparecerá una pantalla con un resumen de todas las opciones que seleccionamos. Revisamos que todos los datos sean correctos antes de continuar.</p>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 bg-upiicsa text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">7</div>
+                    <p class="mt-1">Una vez terminado el proceso, nos dirigimos a la opción <strong>New File</strong> y seleccionamos <strong>VHDL File</strong>, donde escribimos el código VHDL proporcionado anteriormente y comenzamos con la compilación.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full bg-gray-900 text-gray-400 text-center py-6 mt-10 font-mono text-sm">
+        <p>© 2026 IPN - UPIICSA. Aplicación de Sistemas Digitales.</p>
+    </footer>
+</body>
+</html>
