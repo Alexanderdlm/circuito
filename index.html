@@ -11,9 +11,9 @@
             theme: {
                 extend: {
                     colors: {
-                        ipn: '#8a2744',      /* Guinda IPN (más brillante para fondo oscuro) */
-                        upiicsa: '#00d17a',  /* Verde UPIICSA (estilo neón para fondo oscuro) */
-                        circuitbg: '#0a0f1a', /* Azul muy oscuro casi negro */
+                        ipn: '#8a2744',      
+                        upiicsa: '#00d17a',  
+                        circuitbg: '#0a0f1a', 
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -26,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* Fondo estilo placa de circuito impreso (PCB) / Grid tech */
         body {
             background-color: #0a0f1a;
             background-image: 
@@ -37,33 +36,22 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Efecto de brillo neón para las tarjetas al hacer hover */
-        .glow-card {
-            transition: all 0.3s ease;
-        }
+        .glow-card { transition: all 0.3s ease; }
         .glow-card:hover {
             box-shadow: 0 0 20px rgba(0, 209, 122, 0.4), inset 0 0 10px rgba(138, 39, 68, 0.2);
             border-color: #00d17a;
             transform: translateY(-5px);
         }
         
-        /* Líneas decorativas que parecen pistas de cobre/circuito */
-        .circuit-line {
-            position: absolute;
-            background-color: #00d17a;
-            opacity: 0.5;
-        }
+        .circuit-line { position: absolute; background-color: #00d17a; opacity: 0.5; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col items-center p-6 relative overflow-x-hidden">
 
-    <!-- Decoraciones de fondo imitando pistas de circuito -->
     <div class="circuit-line w-px h-32 top-0 left-10 md:left-24 bg-gradient-to-b from-transparent to-upiicsa"></div>
     <div class="circuit-line w-32 h-px top-20 right-0 bg-gradient-to-l from-transparent to-ipn"></div>
 
-    <!-- Encabezado Institucional -->
     <header class="w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mt-8 gap-6 z-10 relative">
-        <!-- Logo IPN -->
         <div class="bg-white p-2 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.1)]">
             <img src="ipn.png" alt="Logo IPN" class="w-16 md:w-24 object-contain" />
         </div>
@@ -80,34 +68,29 @@
             </p>
         </div>
 
-        <!-- Logo UPIICSA -->
         <div class="bg-white p-2 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.1)]">
             <img src="upi.png" alt="Logo UPIICSA" class="w-16 md:w-24 object-contain" />
         </div>
     </header>
 
-    <!-- Contenedor Principal de las Prácticas -->
-    <main class="w-full max-w-4xl mx-auto mt-16 z-10 flex-grow">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+    <main class="w-full max-w-6xl mx-auto mt-16 z-10 flex-grow">
+        <!-- Ajusté la cuadrícula a 3 columnas en pantallas grandes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
             
             <!-- TARJETA PRÁCTICA 3 -->
             <a href="practica_3.html" class="glow-card relative bg-[#111827] border border-gray-700 rounded-xl p-6 flex flex-col justify-between overflow-hidden group">
                 <div class="absolute left-0 top-1/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
                 <div class="absolute left-0 top-2/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
-                
-                <!-- Efecto de LED activo -->
                 <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ef4444]"></div>
 
                 <div class="pl-4">
                     <div class="flex justify-between items-start mb-4">
                         <span class="text-xs font-mono text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded border border-yellow-400/30">ID: PRCT-03</span>
-                        <svg class="w-8 h-8 text-gray-500 group-hover:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
                     </div>
                     <h2 class="text-2xl font-bold text-white mb-2">Práctica 3</h2>
                     <h3 class="text-gray-400 font-medium mb-4">Sumador de 6 Bits</h3>
                     <p class="text-sm text-gray-500 font-mono leading-relaxed line-clamp-3">
-                        Diseño e instanciación de un sumador de 6 bits utilizando tarjeta MAX II EPM 240T100C y programación VHDL.
+                        Diseño e instanciación de un sumador de 6 bits utilizando tarjeta MAX II EPM 240T100C.
                     </p>
                 </div>
                 <div class="mt-6 flex items-center text-upiicsa font-semibold text-sm">
@@ -120,19 +103,39 @@
             <a href="practica_4.html" class="glow-card relative bg-[#111827] border border-gray-700 rounded-xl p-6 flex flex-col justify-between overflow-hidden group">
                 <div class="absolute left-0 top-1/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
                 <div class="absolute left-0 top-2/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
-
-                <!-- Efecto de LED activo -->
                 <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
                 
                 <div class="pl-4">
                     <div class="flex justify-between items-start mb-4">
                         <span class="text-xs font-mono text-blue-400 bg-blue-400/10 px-2 py-1 rounded border border-blue-400/30">ID: PRCT-04</span>
-                        <svg class="w-8 h-8 text-gray-500 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
                     <h2 class="text-2xl font-bold text-white mb-2">Práctica 4</h2>
                     <h3 class="text-gray-400 font-medium mb-4">Restador y Comparador</h3>
                     <p class="text-sm text-gray-500 font-mono leading-relaxed line-clamp-3">
-                        Diseño, simulación e implementación de un circuito restador y comparador de magnitudes de 6 bits en hardware.
+                        Circuito restador y comparador de magnitudes de 6 bits en hardware.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center text-upiicsa font-semibold text-sm">
+                    <span>Acceder al sistema</span>
+                    <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </div>
+            </a>
+
+            <!-- TARJETA PRÁCTICA 5 (NUEVA) -->
+            <a href="practica_5.html" class="glow-card relative bg-[#111827] border border-gray-700 rounded-xl p-6 flex flex-col justify-between overflow-hidden group">
+                <div class="absolute left-0 top-1/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
+                <div class="absolute left-0 top-2/4 w-2 h-16 bg-gray-600 rounded-r-md"></div>
+                <!-- Efecto de LED activo Púrpura -->
+                <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-purple-500 animate-pulse shadow-[0_0_8px_#a855f7]"></div>
+                
+                <div class="pl-4">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-mono text-purple-400 bg-purple-400/10 px-2 py-1 rounded border border-purple-400/30">ID: PRCT-05</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Práctica 5</h2>
+                    <h3 class="text-gray-400 font-medium mb-4">Multiplexor y</h3>
+                    <p class="text-sm text-gray-500 font-mono leading-relaxed line-clamp-3">
+                        Implementación de un MUX que controla un Sumador, Restador, Comparador independiente, AND y XOR.
                     </p>
                 </div>
                 <div class="mt-6 flex items-center text-upiicsa font-semibold text-sm">
@@ -145,7 +148,7 @@
     </main>
 
     <footer class="w-full text-center py-8 text-gray-600 font-mono text-xs z-10 mt-auto">
-        <p>CONECTADO AL SERVIDOR // APLICACIÓN DE SISTEMAS DIGITALES © 2026</p>
+        <p>APLICACIÓN DE SISTEMAS DIGITALES © 2026</p>
     </footer>
 
 </body>
